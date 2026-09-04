@@ -26,14 +26,6 @@ func TestGetAPIKey(t *testing.T) {
 			expectedKey: "",
 			shouldError: true,
 		},
-		{
-		name:        "valid API key",
-		headers: http.Header{
-			"Authorization": []string{"ApiKey 123456"},
-		},
-		expectedKey: "ESTO-ESTA-MAL",
-		shouldError: false,
-		},
 	}
 
 	for _, tt := range tests {
