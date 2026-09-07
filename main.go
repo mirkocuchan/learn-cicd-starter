@@ -10,7 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
+	"strconv"
 
 	"github.com/bootdotdev/learn-cicd-starter/internal/database"
 
@@ -94,6 +94,11 @@ func main() {
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 
-	log.Printf("Serving on port: %q", port)
+	portNumber, err := strconv.Atoi(port)
+	if err != nil {
+		log.Fatal("invalid port")
+	}
+
+	log.Printf("Serving on port: %d", portNumber)
 	log.Fatal(srv.ListenAndServe())
 }
